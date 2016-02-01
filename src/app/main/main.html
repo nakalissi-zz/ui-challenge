@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row jumbotron">
+    <div class="col-sm-6 col-xs-12">
+      <h2>Procure a localização para:</h2>
+      <form class="" name="mapSearch">
+        <div class="form-group">
+          <label for="">Que empresa você procura?</label>{{mapSearch.website.$error.pattern}}
+          <input type="text" name="website" value="" placeholder="www.nytimes.com" class="form-control"
+            ng-model="website"
+            ng-pattern="/^[a-z]+:[^w]+$/i">
+        </div>
+        <button type="button" name="button" class="btn btn-primary">Locate</button>
+        <button type="reset" name="button" class="btn btn-danger">Reset</button>
+      </form>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+      <div id="map"></div>
+      <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
+        <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+      </div>
+    </div>
+  </div>
+
+</div>
