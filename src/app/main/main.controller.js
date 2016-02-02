@@ -21,7 +21,7 @@
     }
 
     $scope.loadMap = function(info, val){
-
+      var coords;
       if (val === 0){
         var coords = {lat: info.coords.latitude, lng: info.coords.longitude}
       } else {
@@ -55,7 +55,6 @@
 
     $scope.loadCoordinates = function(url){
       if(url){
-
         MainService.getCoordinates(url).success(function(response){
           if(response.status === "success"){
             $scope.loadMap(response, 1);

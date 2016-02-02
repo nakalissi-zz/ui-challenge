@@ -11,6 +11,9 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
  */
 // bower:scss
 // endbower
+body{
+  font-family: 'Play', sans-serif;
+}
 .jumbotron{
   margin: 18px auto;
 }

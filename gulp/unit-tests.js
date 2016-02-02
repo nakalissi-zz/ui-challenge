@@ -5,7 +5,6 @@ var gulp = require('gulp');
 var conf = require('./conf');
 
 var karma = require('karma');
-
 var pathSrcHtml = [
   path.join(conf.paths.src, '/**/*.html')
 ];
