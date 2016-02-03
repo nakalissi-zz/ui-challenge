@@ -1,11 +1,8 @@
 (function() {
-  'use strict';
 
   describe('MainController', function(){
 
     beforeEach(module('uiChallenge'));
-
-    var scope, service;
 
     var getCoordinates = {
       "as":"AS26599 TELEFÔNICA BRASIL S.A",
@@ -26,18 +23,38 @@
       "zip":""
     }
 
-    beforeEach(inject(function($rootScope, $controller, $mainservice) {
-      service = $mainservice;
+    var $controller, $service, scope;
 
-      scope = $rootScope.$new();
-      $controller('MainController', {
-        $scope.scope
-      });
+    beforeEach(inject(function(_$rootScope_, _$controller_, $injector) {
+      scope = _$rootScope_.$new();
+      $controller = _$controller_;
+      $service = $injector.get('MainService');
     }));
 
-    it('should message equals to false', function(){
-      expect(scope.message).toEqual(false);
-    })
+    describe('geolocation', function(){
+      beforeEach(function(){
+        controller = $controller('MainController', { $scope: scope });
+        service  = $service;
+      });
+
+      it('should receive the response of the api', function(){
+        var pattern = /(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/i;
+        scope.filter = 'www.vivo.com.br';
+        expect(pattern.test(scope.filter)).toBe(true);
+        service.getCoordinates(scope.filter).success(function(response){
+          expect(response.status).toBe('success');
+          expect(response).toEqual(getCoordinates);
+        });
+      })
+
+      it('should reset pointer to a local geolocation', function(){
+        scope.reset = function(){
+          if (navigator.geolocation) {
+            expect(navigator.geolocation.getCurrentPosition(onGoogleReady)).toBeDefine();
+          }
+        }
+      });
+    });
 
   });
 })();

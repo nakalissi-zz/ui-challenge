@@ -30,12 +30,7 @@ function listFiles() {
       pattern: pattern
     };
   });
-  files.push({
-    pattern: path.join(conf.paths.src, '/app/**/*'),
-    included: false,
-    served: true,
-    watched: false
-  });
+
   return files;
 }
 
@@ -77,10 +72,10 @@ module.exports = function(config) {
     },
 
     reporters: ['progress'],
-
+/*
     proxies: {
       '/assets/': path.join('/base/', conf.paths.src, '/assets/')
-    }
+    }*/
   };
 
   // This is the default preprocessors configuration for a usage with Karma cli
