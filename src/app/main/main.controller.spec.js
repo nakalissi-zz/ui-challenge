@@ -50,7 +50,7 @@
       it('should reset pointer to a local geolocation', function(){
         scope.reset = function(){
           if (navigator.geolocation) {
-            expect(navigator.geolocation.getCurrentPosition(onGoogleReady)).toBeDefine();
+            expect(navigator.geolocation).toBeDefined();
           }
         }
       });
