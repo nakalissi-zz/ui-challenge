@@ -1,11 +1,12 @@
 # Avenue Code UI Challenge - Part I #
 
-### Start the application
+### Install the dependencies
 ```
 npm install
 bower install
 ```
-### Unit Test
+
+### Start the application
 After install all dev dependencies, write down the follow command in the terminal
 ```
 gulp serve
